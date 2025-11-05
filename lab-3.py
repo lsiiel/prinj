@@ -4,9 +4,11 @@ from lab3_logic import calculate_fare_by_sex
 
 st.title("🎟️ Анализ стоимости билетов пассажиров Титаника")
 
+
 @st.cache_data
 def load_data():
     return pd.read_csv("titanic_train.csv")
+
 
 df = load_data()
 
