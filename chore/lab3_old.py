@@ -10,16 +10,26 @@ def load_data():
 
 df = load_data()
 
+st.write("### Первые строки данных:")
+st.dataframe(df.head())
+
 st.sidebar.header("⚙️ Настройки анализа")
+
 func_option = st.sidebar.selectbox("Выберите функцию:", ["min", "max", "avg"])
 
 if st.sidebar.button("Рассчитать"):
     result = calculate_fare_by_sex(df, func_option)
+
     st.subheader(f"Результаты ({func_option.upper()} цена билета)")
     st.table(result)
     st.bar_chart(result)
 else:
     st.info("Выберите функцию и нажмите **Рассчитать**.")
 
-
-# python -m streamlit run lab-3.py
+st.markdown("""
+---
+**Описание:**
+- `Sex` — пол пассажира (male/female)  
+- `Fare` — стоимость билета  
+- Можно выбрать одну из функций: **min**, **max** или **avg**
+""")
